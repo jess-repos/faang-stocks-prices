@@ -4,6 +4,9 @@ import Today from "../components/charts/Today";
 import Stats from "../components/stats/Stats";
 import getData from "../utils/getData";
 
+import fs from "fs";
+import path from "path";
+
 const amazon = ({ data, latest, today, info }) => {
   return (
     <>
@@ -21,8 +24,22 @@ const amazon = ({ data, latest, today, info }) => {
   );
 };
 
-export async function getStaticProps(context) {
-  const props = await getData("amazon.json");
+export function getStaticPaths() {
+  const dataDirectory = path.join(process.cwd(), "src", "data");
+
+  const dataFilenames = fs.readdirSync(dataDirectory);
+  const slugs = dataFilenames.map((fileName) =>
+    fileName.replace(/\.json$/, "")
+  );
+  return {
+    paths: slugs.map((slug) => ({ params: { company: slug } })),
+    fallback: false,
+  };
+}
+
+export async function getStaticProps({ params }) {
+  const { company } = params;
+  const props = await getData(`${company}.json`);
   return props;
 }
 

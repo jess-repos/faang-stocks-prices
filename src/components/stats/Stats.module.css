@@ -1,0 +1,25 @@
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(24rem, 1fr));
+  gap: 1rem;
+}
+.grid div {
+  height: 12rem;
+  background-color: var(--cl-dark2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+/* @media only screen and (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+} */

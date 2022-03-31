@@ -28,13 +28,10 @@ const Navbar = () => {
             <Link href="/apple">Apple</Link>
             <Link href="/amazon">Amazon</Link>
             <Link href="/netflix">Netflix</Link>
-            <Link href="/google">Google</Link>
-            <Link href="/tesla" onClick={() => setIsNavOpen(false)}>
-              Tesla
-            </Link>
-            <Link href="/microsoft" onClick={() => setIsNavOpen(false)}>
-              Microsoft
-            </Link>
+            <Link href="/google-class-a">Google Class A</Link>
+            <Link href="/google-class-c">Google Class C</Link>
+            <Link href="/tesla">Tesla</Link>
+            <Link href="/microsoft">Microsoft</Link>
           </ul>
           <p>© Mark Christian Albinto @2022</p>
         </div>

@@ -81,5 +81,6 @@ export default async function getData(filename) {
   };
   return {
     props: { data, latest, today, info },
+    revalidate: 600,
   };
 }

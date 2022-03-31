@@ -1,30 +1,29 @@
-import { useEffect } from "react";
+
 import Head from "next/head";
 import StockPrices from "../components/charts/StockPrices";
 import Today from "../components/charts/Today";
 import Stats from "../components/stats/Stats";
-import { useNav } from "../contexts/NavProvider";
 import getData from "../utils/getData";
 import getSlugs from "../utils/getSlugs";
+import Main from "../components/Main";
 
-const amazon = ({ data, latest, today, info, links }) => {
-  const { linksHandler } = useNav();
-  useEffect(() => {
-    linksHandler(links);
-  }, []);
+const company = ({ data, latest, today, info, links }) => {
+
 
   return (
     <>
       <Head>
         <title>FAANG+ | {info.items[0].value}</title>
       </Head>
-      <Stats data={info} />
-      <StockPrices data={data} />
-      <Stats data={latest} />
-      <div className="today">
-        <Today data={today} />
-        <Today data={today} />
-      </div>
+      <Main links={links}>
+        <Stats data={info} />
+        <StockPrices data={data} />
+        <Stats data={latest} />
+        <div className="today">
+          <Today data={today} />
+          <Today data={today} />
+        </div>
+      </Main>
     </>
   );
 };
@@ -43,4 +42,4 @@ export async function getStaticProps({ params }) {
   return props;
 }
 
-export default amazon;
+export default company;

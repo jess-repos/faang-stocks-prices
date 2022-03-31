@@ -2,18 +2,15 @@ import { useEffect } from "react";
 import Head from "next/head";
 import { useNav } from "../contexts/NavProvider";
 import getSlugs from "../utils/getSlugs";
+import Main from "../components/Main";
 
 export default function Home({ links }) {
-  const { linksHandler } = useNav();
-  useEffect(() => {
-    linksHandler(links);
-  }, []);
-
   return (
     <>
       <Head>
         <title>FAANG+</title>
       </Head>
+      <Main links={links}></Main>
     </>
   );
 }

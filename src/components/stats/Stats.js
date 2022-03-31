@@ -5,7 +5,7 @@ import classes from "./Stats.module.css";
 const Stats = ({ data }) => {
   return (
     <div className={classes.stats}>
-      <h2>{data.title}</h2>
+      {data.title && <h2>{data.title}</h2>}
       <div className={classes.grid}>
         {data.items.map((item, index) => {
           return (

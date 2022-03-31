@@ -1,10 +1,11 @@
 import fs from "promise-fs";
 import path from "path";
+import getSlugs from "./getSlugs";
 
 export default async function getData(filename) {
   const filePath = path.join(process.cwd(), "src", "data", filename);
   const rawData = await fs.readFile(filePath);
-  const parsedData = JSON.parse(rawData).reverse();
+  let parsedData = JSON.parse(rawData).reverse();
   const high = parsedData.map((item) => {
     if (!item.high) return 0;
     return item.high;
@@ -37,7 +38,7 @@ export default async function getData(filename) {
     date,
   };
 
-  const lastItem = parsedData[999];
+  const lastItem = parsedData[parsedData.length - 1];
   const lastDate = new Date(lastItem.date);
   const lastDateTime =
     lastDate.toLocaleDateString("en-GB", options) +
@@ -46,7 +47,7 @@ export default async function getData(filename) {
     ":00";
 
   const info = {
-    title: "Information",
+    // title: "Information",
     items: [
       { name: "Symbol", value: symbol },
       // { name: "Symbol", value: symbol },
@@ -79,8 +80,9 @@ export default async function getData(filename) {
     open: dataToday.map((item) => item.open),
     date: dataToday.map((item) => item.date),
   };
+  const links = getSlugs();
   return {
-    props: { data, latest, today, info },
+    props: { data, latest, today, info, links },
     revalidate: 600,
   };
 }

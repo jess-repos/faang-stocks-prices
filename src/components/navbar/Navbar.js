@@ -4,8 +4,9 @@ import Link from "next/link";
 
 import classes from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ links }) => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+
   return (
     <>
       {isNavOpen && (
@@ -24,20 +25,27 @@ const Navbar = () => {
         <div className={`${classes.panel} ${isNavOpen && classes.open}`}>
           <ul className={classes.links} onClick={() => setIsNavOpen(false)}>
             <Link href="/">Home</Link>
-            <Link href="/facebook">Facebook</Link>
-            <Link href="/apple">Apple</Link>
-            <Link href="/amazon">Amazon</Link>
-            <Link href="/netflix">Netflix</Link>
-            <Link href="/google-class-a">Google Class A</Link>
-            <Link href="/google-class-c">Google Class C</Link>
-            <Link href="/tesla">Tesla</Link>
-            <Link href="/microsoft">Microsoft</Link>
+
+            {links.map((item, index) => (
+              <Link key={index} href={`/${item}`}>
+                {convertTitle(item)}
+              </Link>
+            ))}
           </ul>
           <p>© Mark Christian Albinto @2022</p>
         </div>
       </div>
     </>
   );
+};
+
+const convertTitle = (title) => {
+  const splitted = title.split("-");
+  const capitalized = splitted.map(
+    (item) => item.charAt(0).toUpperCase() + item.slice(1)
+  );
+  const joined = capitalized.join(" ");
+  return joined;
 };
 
 export default Navbar;

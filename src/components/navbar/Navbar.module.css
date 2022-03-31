@@ -54,7 +54,7 @@
   transition: 0.25s ease-in-out;
 }
 .links a:hover {
-  border-right: 2px solid var(--cl-primary);
+  border-right: 2px solid white;
   transform: scale(110%);
   background-color: var(--cl-dark3);
 }

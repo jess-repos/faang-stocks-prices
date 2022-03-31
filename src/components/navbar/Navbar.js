@@ -3,9 +3,12 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Link from "next/link";
 
 import classes from "./Navbar.module.css";
+import { useNav } from "../../contexts/NavProvider";
 
-const Navbar = ({ links }) => {
+const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const { links } = useNav();
 
   return (
     <>

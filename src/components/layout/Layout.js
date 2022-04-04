@@ -5,8 +5,8 @@ import Navbar from "../navbar/Navbar";
 const Layout = ({ children }) => {
   return (
     <NavProvider>
-      <Navbar />
       <main>{children}</main>
+      <Navbar />
     </NavProvider>
   );
 };

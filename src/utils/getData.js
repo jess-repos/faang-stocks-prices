@@ -81,8 +81,5 @@ export default async function getData(filename) {
     date: dataToday.map((item) => item.date),
   };
   const links = getSlugs();
-  return {
-    props: { data, latest, today, info, links },
-    revalidate: 600,
-  };
+  return { data, latest, today, info, links };
 }

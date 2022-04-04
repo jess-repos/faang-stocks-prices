@@ -20,21 +20,28 @@
 }
 .navbar h1 {
   font-size: 2rem;
-}
-.navbar svg {
   cursor: pointer;
+}
+.action svg {
+  cursor: pointer;
+}
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 .panel {
   position: fixed;
   top: 4rem;
-  left: 0;
+  right: 0;
   bottom: 0;
   width: 28rem;
   background-color: var(--cl-dark2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transform: translateX(-100%);
+  transform: translateX(100%);
   transition: 0.25s ease-in-out;
 }
 .panel p {
@@ -54,7 +61,7 @@
   transition: 0.25s ease-in-out;
 }
 .links a:hover {
-  border-right: 2px solid white;
+  border-left: 2px solid white;
   transform: scale(110%);
   background-color: var(--cl-dark3);
 }
@@ -64,5 +71,8 @@
 @media only screen and (max-width: 600px) {
   .panel {
     width: 100%;
+  }
+  .action {
+    gap: 1rem;
   }
 }

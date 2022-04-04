@@ -1,4 +1,3 @@
-
 import Head from "next/head";
 import StockPrices from "../components/charts/StockPrices";
 import Today from "../components/charts/Today";
@@ -7,15 +6,13 @@ import getData from "../utils/getData";
 import getSlugs from "../utils/getSlugs";
 import Main from "../components/Main";
 
-const company = ({ data, latest, today, info, links }) => {
-
-
+const Company = ({ data, latest, today, info, links, company }) => {
   return (
     <>
       <Head>
         <title>FAANG+ | {info.items[0].value}</title>
       </Head>
-      <Main links={links}>
+      <Main links={links} company={company}>
         <Stats data={info} />
         <StockPrices data={data} />
         <Stats data={latest} />
@@ -39,7 +36,10 @@ export function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const { company } = params;
   const props = await getData(`${company}.json`);
-  return props;
+  return {
+    props: { ...props, company },
+    revalidate: 600,
+  };
 }
 
-export default company;
+export default Company;

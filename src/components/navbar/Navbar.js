@@ -8,7 +8,7 @@ import { useNav } from "../../contexts/NavProvider";
 const Navbar = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
-  const { links } = useNav();
+  const { links, company } = useNav();
 
   return (
     <>
@@ -19,12 +19,21 @@ const Navbar = () => {
         ></div>
       )}
       <div className={classes.navbar}>
-        <GiHamburgerMenu
-          size={"2rem"}
-          onClick={() => setIsNavOpen((prev) => !prev)}
-        />
-        <h1>FAANG+</h1>
-        <span />
+        <Link href={"/"}>
+          <h1>FAANG+</h1>
+        </Link>
+        <div className={classes.action}>
+          {company && (
+            <>
+              <h2>{convertTitle(company)}</h2>
+              <span>|</span>
+            </>
+          )}
+          <GiHamburgerMenu
+            size={"2rem"}
+            onClick={() => setIsNavOpen((prev) => !prev)}
+          />
+        </div>
         <div className={`${classes.panel} ${isNavOpen && classes.open}`}>
           <ul className={classes.links} onClick={() => setIsNavOpen(false)}>
             <Link href="/">Home</Link>

@@ -6,13 +6,19 @@ export const useNav = () => useContext(navContext);
 
 const NavProvider = ({ children }) => {
   const [links, setLinks] = useState([]);
+  const [company, setCompany] = useState("");
 
   const linksHandler = (items) => {
     setLinks(items);
   };
+  const companyHandler = (item) => {
+    setCompany(item);
+  };
 
   return (
-    <navContext.Provider value={{ links, linksHandler }}>
+    <navContext.Provider
+      value={{ links, linksHandler, company, companyHandler }}
+    >
       {children}
     </navContext.Provider>
   );

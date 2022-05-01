@@ -80,6 +80,25 @@ export default async function getData(filename) {
     open: dataToday.map((item) => item.open),
     date: dataToday.map((item) => item.date),
   };
+
+  let prevDate = new Date(lastDate.getTime());
+  prevDate.setDate(prevDate.getDate() - 1);
+
+  const dataYesterday = parsedData.filter((item) => {
+    const tempDate = new Date(item.date);
+    return (
+      (tempDate.getDate() === prevDate.getDate()) &
+      (tempDate.getMonth() === prevDate.getMonth()) &
+      (tempDate.getFullYear() === prevDate.getFullYear())
+    );
+  });
+  const yesterday = {
+    high: dataYesterday.map((item) => item.high),
+    low: dataYesterday.map((item) => item.low),
+    open: dataYesterday.map((item) => item.open),
+    date: dataYesterday.map((item) => item.date),
+  };
+  console.log(dataYesterday);
   const links = getSlugs();
-  return { data, latest, today, info, links };
+  return { data, latest, today, yesterday, info, links };
 }

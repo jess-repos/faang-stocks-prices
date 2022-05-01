@@ -21,8 +21,8 @@ const StockPrices = ({ data }) => {
                 label: "Open",
                 fill: true,
                 // backgroundColor: "rgba(235, 64, 52, 0.3)", // graph background
-                borderColor: "#fd9cff", // line color
-                pointBackgroundColor: "#fd9cff", // point color
+                borderColor: "#b0b0b0", // line color
+                pointBackgroundColor: "#b0b0b0", // point color
                 // tension: 0.4, // lince curve (0-1)
                 borderWidth: 1,
                 yAxisID: "y",
@@ -33,8 +33,8 @@ const StockPrices = ({ data }) => {
                 label: "High",
                 fill: true,
                 // backgroundColor: "rgba(235, 64, 52, 0.3)", // graph background
-                borderColor: "#45ecff", // line color
-                pointBackgroundColor: "#45ecff", // point color
+                borderColor: "#48c6f0", // line color
+                pointBackgroundColor: "#48c6f0", // point color
                 // tension: 0.4, // lince curve (0-1)
                 borderWidth: 1,
                 yAxisID: "y",
@@ -45,8 +45,8 @@ const StockPrices = ({ data }) => {
                 label: "Low",
                 fill: true,
                 // backgroundColor: "rgba(235, 64, 52, 0.3)", // graph background
-                borderColor: "#f56c6c", // line color
-                pointBackgroundColor: "#f56c6c", // point color
+                borderColor: "#fc7e2b", // line color
+                pointBackgroundColor: "#fc7e2b", // point color
                 // tension: 0.4, // lince curve (0-1)
                 borderWidth: 1,
                 yAxisID: "y",

@@ -1,0 +1,36 @@
+// download and install node.js from https://nodejs.org/en/download/
+
+// rename this file to fetcher.js
+
+// install axios using npm or yarn
+const axios = require("axios");
+
+const fs = require("fs");
+const path = require("path");
+
+// get your api key at https://marketstack.com
+const API_KEY = "d2c089d1998a440f1410513a14dd592c";
+
+// check symbol and limit from the documentary https://marketstack.com/documentation
+const SYMBOL = "GOOGL";
+const LIMIT = 1000; // max 1000
+
+const URI =
+  "http://api.marketstack.com/v1/intraday?access_key=<YOUR API KEY>&symbols=<YOUR SYMBOL>&limit=<YOUR LIMIT>";
+  
+const basePath = process.cwd();
+
+const FILE_NAME = "google-class-a.json"; // file name to write
+const filePath = path.join(basePath, FILE_NAME);
+
+// fetch data and write data function
+const run = async () => {
+  try {
+    const { data } = await axios.get(URI);
+    fs.writeFileSync(filePath, JSON.stringify(data.data));
+  } catch (err) {
+    console.log(err.message);
+  }
+};
+
+run();

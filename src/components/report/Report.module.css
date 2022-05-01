@@ -1,0 +1,21 @@
+.report {
+  background-color: var(--cl-dark2);
+  margin-bottom: 0.5rem;
+  padding: 1rem;
+}
+.report h3 {
+  margin-top: 1rem;
+}
+.report h2 {
+  margin: 0 !important;
+}
+.report a {
+  color: rgb(0, 174, 255);
+  transition: 0.25s ease-in-out;
+}
+.report a:hover {
+  text-decoration: underline;
+}
+.report img{
+  width: 100%;
+}

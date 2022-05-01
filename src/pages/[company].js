@@ -5,8 +5,9 @@ import Stats from "../components/stats/Stats";
 import getData from "../utils/getData";
 import getSlugs from "../utils/getSlugs";
 import Main from "../components/Main";
+import Yesterday from "../components/charts/Yesterday";
 
-const Company = ({ data, latest, today, info, links, company }) => {
+const Company = ({ data, latest, today, yesterday, info, links, company }) => {
   return (
     <>
       <Head>
@@ -18,7 +19,7 @@ const Company = ({ data, latest, today, info, links, company }) => {
         <Stats data={latest} />
         <div className="today">
           <Today data={today} />
-          <Today data={today} />
+          <Yesterday data={yesterday} />
         </div>
       </Main>
     </>

@@ -2,7 +2,7 @@ import "chart.js/auto";
 import { Chart } from "react-chartjs-2";
 import classes from "./Chart.module.css";
 
-const Today = ({ data }) => {
+const Yesterday = ({ data }) => {
   let delayed;
 
   const labels = data.date.map((item) => {
@@ -71,7 +71,7 @@ const Today = ({ data }) => {
               },
               title: {
                 display: true,
-                text: "Today",
+                text: "Yesterday",
                 font: {
                   size: "32",
                 },
@@ -100,4 +100,4 @@ const Today = ({ data }) => {
   );
 };
 
-export default Today;
+export default Yesterday;
